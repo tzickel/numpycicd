@@ -1,0 +1,11 @@
+FROM quay.io/pypa/manylinux2010_x86_64
+
+RUN yum install -y atlas atlas-devel
+
+# TODO uncomment this lines when everything works on cp37-cp37m
+#RUN /opt/python/cp27-cp27m/bin/pip install setuptools nose cython==0.29.0 pytest pytz pickle5
+#RUN /opt/python/cp27-cp27mu/bin/pip install setuptools nose cython==0.29.0 pytest pytz pickle5
+#RUN /opt/python/cp34-cp34m/bin/pip install setuptools nose cython==0.29.0 pytest pytz pickle5
+#RUN /opt/python/cp35-cp35m/bin/pip install setuptools nose cython==0.29.0 pytest pytz pickle5
+#RUN /opt/python/cp36-cp36m/bin/pip install setuptools nose cython==0.29.0 pytest pytz pickle5
+RUN /opt/python/cp37-cp37m/bin/pip install setuptools nose cython==0.29.0 pytest pytz pickle5
