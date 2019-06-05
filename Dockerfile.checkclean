@@ -1,15 +1,13 @@
 ARG BASEIMAGE=ubuntu:16.04
 FROM $BASEIMAGE
 
-RUN apt-get update && apt-get install -y python-pip python3-pip
+RUN apt-get update && apt-get install -y python-pip python3-pip python-pytest python3-pytest
 
-ADD . /tmp
+ADD out/io/wheelhouse/* /tmp/
 
 ARG WHL2FILE
 ARG WHL3FILE
 
-RUN pip install $WHL2FILE
+RUN pip install /tmp/$WHL2FILE && python -c "import numpy; numpy.test()"
 
-RUN pip3 install $WHL3FILE
-
-#install and run pytest
+RUN pip3 install /tmp/$WHL3FILE && python3 -c "import numpy; numpy.test()"
