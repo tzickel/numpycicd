@@ -1,0 +1,15 @@
+ARG BASEIMAGE=ubuntu:16.04
+FROM $BASEIMAGE
+
+RUN apt-get update && apt-get install -y python-pip python3-pip
+
+ADD . /tmp
+
+ARG WHL2FILE
+ARG WHL3FILE
+
+RUN pip install $WHL2FILE
+
+RUN pip3 install $WHL3FILE
+
+#install and run pytest
