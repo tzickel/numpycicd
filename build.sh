@@ -14,4 +14,4 @@ mkdir -p out
 docker run --rm numpycicd:manylinux1_x86_64 | tar -C out -xv
 
 # Check the resulting wheels on a clean ubuntu version (if this finishes correctly the tests passed)
-docker build -f Dockerfile.checkclean --build-arg WHL2FILE=numpy-1.16.4-cp27-cp27m-manylinux1_x86_64.whl --build-arg WHL3FILE=numpy-1.16.4-cp35-cp35m-manylinux1_x86_64.whl .
+docker build -f Dockerfile.checkclean --build-arg WHL2FILE=numpy-1.16.4-cp27-cp27mu-manylinux1_x86_64.whl --build-arg WHL3FILE=numpy-1.16.4-cp35-cp35m-manylinux1_x86_64.whl .

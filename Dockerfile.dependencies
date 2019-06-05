@@ -3,8 +3,8 @@ FROM $BASEIMAGE
 
 RUN yum install -y atlas atlas-devel wget
 
-RUN /opt/python/cp27-cp27m/bin/pip install setuptools cython==0.29.0 pytest pytz
-#RUN /opt/python/cp27-cp27mu/bin/pip install setuptools cython==0.29.0 pytest pytz
+#RUN /opt/python/cp27-cp27m/bin/pip install setuptools cython==0.29.0 pytest pytz
+RUN /opt/python/cp27-cp27mu/bin/pip install setuptools cython==0.29.0 pytest pytz
 #RUN /opt/python/cp34-cp34m/bin/pip install setuptools cython==0.29.0 pytest pytz
 RUN /opt/python/cp35-cp35m/bin/pip install setuptools cython==0.29.0 pytest pytz
 #RUN /opt/python/cp36-cp36m/bin/pip install setuptools cython==0.29.0 pytest pytz pickle5

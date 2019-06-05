@@ -1,7 +1,12 @@
 ARG BASEIMAGE=ubuntu:16.04
 FROM $BASEIMAGE
 
-RUN apt-get update && apt-get install -y python-pip python3-pip python-pytest python3-pytest
+RUN apt-get update && apt-get install -y python-pip python3-pip
+
+# TODO do i need nose ?
+RUN pip install pytest nose
+
+RUN pip3 install pytest nose
 
 ADD out/io/wheelhouse/* /tmp/
 
