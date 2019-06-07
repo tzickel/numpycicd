@@ -1,0 +1,15 @@
+ARG BASEIMAGE=quay.io/pypa/manylinux1_x86_64
+FROM $BASEIMAGE
+
+RUN yum install -y wget
+
+RUN /opt/python/cp27-cp27m/bin/pip install setuptools cython==0.29.0 pytest pytz
+RUN /opt/python/cp27-cp27mu/bin/pip install setuptools cython==0.29.0 pytest pytz
+RUN /opt/python/cp34-cp34m/bin/pip install setuptools cython==0.29.0 pytest pytz
+RUN /opt/python/cp35-cp35m/bin/pip install setuptools cython==0.29.0 pytest pytz
+RUN /opt/python/cp36-cp36m/bin/pip install setuptools cython==0.29.0 pytest pytz pickle5
+RUN /opt/python/cp37-cp37m/bin/pip install setuptools cython==0.29.0 pytest pytz pickle5
+
+ARG OPENBLAS=openblas-v0.3.5-274-g6a8b4269-manylinux1_x86_64.tar.gz
+COPY "$OPENBLAS" /tmp/openblas.tar.gz
+RUN cd / && tar -xf /tmp/openblas.tar.gz && rm /tmp/openblas.tar.gz

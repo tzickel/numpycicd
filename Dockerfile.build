@@ -17,7 +17,7 @@ WORKDIR numpy
 RUN /opt/python/cp27-cp27mu/bin/pip wheel -w /io .
 #RUN /opt/python/cp34-cp34m/bin/pip wheel -w /io .
 RUN /opt/python/cp35-cp35m/bin/pip wheel -w /io .
-#RUN /opt/python/cp36-cp36m/bin/pip wheel -w /io .
+RUN /opt/python/cp36-cp36m/bin/pip wheel -w /io .
 #RUN /opt/python/cp37-cp37m/bin/pip wheel -w /io .
 
 ARG PLATFORM=manylinux1_x86_64
