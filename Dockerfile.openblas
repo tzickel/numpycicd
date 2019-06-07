@@ -1,0 +1,18 @@
+ARG BASEIMAGE=quay.io/pypa/manylinux1_x86_64
+FROM $BASEIMAGE
+
+WORKDIR /tmp
+RUN git clone https://github.com/xianyi/OpenBLAS 
+WORKDIR /tmp/OpenBLAS
+ARG CHECKOUT=master
+RUN git checkout $CHECKOUT
+RUN make DYNAMIC_ARCH=1 USE_OPENMP=0 NUM_THREADS=64 FC=gfortran
+RUN make PREFIX=/opt/OpenBLAS install
+ARG PLATFORM=manylinux1_x86_64
+RUN tar zcvf openblas-`git describe --tags`-"$PLATFORM".tar.gz \
+        /opt/OpenBLAS/include/*blas* \
+        /opt/OpenBLAS/include/*lapack* \
+        /opt/OpenBLAS/lib/libopenblas* \
+        /opt/OpenBLAS/lib/cmake/openblas
+
+CMD tar -c *.tar.gz

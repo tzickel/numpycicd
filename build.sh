@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -e
 
+# Build OpenBLAS
+##docker build -t openblas:manylinux1_x86_64 - < Dockerfile.openblas
+##docker run --rm opeblas:manylinux1_x86_64 | tar -C out -xv
+
 # Build static dependencies
 docker build -t numpycicddependencies:manylinux1_x86_64 - < Dockerfile.dependencies
 #docker build -t numpycicddependencies:manylinux2010_x86_64 --build-arg BASEIMAGE=quay.io/pypa/manylinux2010_x86_64 - < Dockerfile.dependencies
